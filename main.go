@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/oduardu/ticket-api/config"
+	"github.com/oduardu/ticket-api/router"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	err := config.Init()
+	if err != nil {
+		fmt.Errorf("Config Initialization error: %v", err)
+		return
+	}
+
+	router.Initialize()
 }
